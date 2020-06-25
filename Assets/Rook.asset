@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3af766e5a797740adaea19f639f7bc, type: 3}
   m_Name: Rook
   m_EditorClassIdentifier: 
-  name: Rook
+  pieceName: 
   legalMoves:
   - {x: 0, y: 1, z: 1}
   - {x: 1, y: 1, z: 1}
@@ -31,3 +31,5 @@ MonoBehaviour:
   - {x: 1, y: 0, z: 1}
   - {x: -1, y: 0, z: 1}
   - {x: 0, y: -1, z: 1}
+  baseTexture: {fileID: 2800000, guid: 1fe2b504ac2f30642a41f4ac1bea7ae7, type: 3}
+  promotedTexture: {fileID: 2800000, guid: 6db1d1b0160533540bdf2e9d08ad986d, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3af766e5a797740adaea19f639f7bc, type: 3}
   m_Name: King
   m_EditorClassIdentifier: 
-  name: King
+  pieceName: King
   legalMoves:
   - {x: 0, y: 1, z: 0}
   - {x: 1, y: 1, z: 0}
@@ -31,3 +31,5 @@ MonoBehaviour:
   - {x: -1, y: -1, z: 0}
   - {x: -1, y: 0, z: 0}
   - {x: -1, y: 1, z: 0}
+  baseTexture: {fileID: 2800000, guid: a34c6221e3f79234c8ae2ebf38da6f42, type: 3}
+  promotedTexture: {fileID: 2800000, guid: a34c6221e3f79234c8ae2ebf38da6f42, type: 3}
