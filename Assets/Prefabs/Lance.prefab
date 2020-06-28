@@ -71,7 +71,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pieceData
       value: 
-      objectReference: {fileID: 11400000, guid: 82f66063c1266304198a662d9c6c0f7e,
+      objectReference: {fileID: 11400000, guid: 16deb63e2be9f6e4f89dd269739da640,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3160e0c36982e4142adff9637e6e5be5, type: 3}

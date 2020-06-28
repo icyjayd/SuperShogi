@@ -11,7 +11,7 @@ PrefabInstance:
         type: 3}
       propertyPath: pieceData
       value: 
-      objectReference: {fileID: 11400000, guid: 3fbfc5c1af5358143a5ffcd33d10cc4e,
+      objectReference: {fileID: 11400000, guid: 82f66063c1266304198a662d9c6c0f7e,
         type: 2}
     - target: {fileID: 3244173912099217183, guid: 943e89f53c400f14f9c8ed5b9ebaefe0,
         type: 3}

@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3af766e5a797740adaea19f639f7bc, type: 3}
   m_Name: Knight
   m_EditorClassIdentifier: 
-  pieceName: 
+  pieceName: Knight
   legalMoves:
-  - {x: 1, y: 2, z: 0}
   - {x: -1, y: 2, z: 0}
+  - {x: 1, y: 2, z: 0}
   promotedLegalMoves:
-  - {x: 0, y: 1, z: 0}
   - {x: 1, y: 1, z: 0}
   - {x: 1, y: 0, z: 0}
+  - {x: 0, y: 1, z: 0}
   - {x: 0, y: -1, z: 0}
-  - {x: -1, y: 0, z: 0}
   - {x: -1, y: 1, z: 0}
+  - {x: -1, y: 0, z: 0}
   baseTexture: {fileID: 2800000, guid: b051ece2869b8f14b8f6c0de53b767dd, type: 3}
   promotedTexture: {fileID: 2800000, guid: d7c1b84d9707a3e469bce84282f89dd0, type: 3}
+  id: 7
+  proID: 13

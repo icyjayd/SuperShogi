@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 195306646557383957, guid: db47340dd6c42ea47b79313adc9b1c36,
+        type: 3}
+      propertyPath: pieceData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3fbfc5c1af5358143a5ffcd33d10cc4e,
+        type: 2}
     - target: {fileID: 437995934702006957, guid: db47340dd6c42ea47b79313adc9b1c36,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -65,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 1494203429464065554, guid: db47340dd6c42ea47b79313adc9b1c36,
         type: 3}
       propertyPath: m_Name
-      value: Piece
+      value: Rook
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db47340dd6c42ea47b79313adc9b1c36, type: 3}

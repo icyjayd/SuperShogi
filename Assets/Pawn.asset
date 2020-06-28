@@ -12,15 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3af766e5a797740adaea19f639f7bc, type: 3}
   m_Name: Pawn
   m_EditorClassIdentifier: 
-  pieceName: 
+  pieceName: Pawn
   legalMoves:
   - {x: 0, y: 1, z: 0}
   promotedLegalMoves:
-  - {x: 0, y: 1, z: 0}
   - {x: 1, y: 1, z: 0}
   - {x: 1, y: 0, z: 0}
+  - {x: 0, y: 1, z: 0}
   - {x: 0, y: -1, z: 0}
-  - {x: -1, y: 0, z: 0}
   - {x: -1, y: 1, z: 0}
+  - {x: -1, y: 0, z: 0}
   baseTexture: {fileID: 2800000, guid: e50b75f50c244134caf2e48933b86870, type: 3}
   promotedTexture: {fileID: 2800000, guid: e0083fd4f1ea4494188b34ac0cd7e235, type: 3}
+  id: 6
+  proID: 12

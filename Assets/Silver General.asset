@@ -12,19 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3af766e5a797740adaea19f639f7bc, type: 3}
   m_Name: Silver General
   m_EditorClassIdentifier: 
-  pieceName: 
+  pieceName: Silver General
   legalMoves:
-  - {x: 0, y: 1, z: 0}
   - {x: 1, y: 1, z: 0}
-  - {x: 1, y: 0, z: 0}
   - {x: 1, y: -1, z: 0}
+  - {x: 0, y: 1, z: 0}
+  - {x: -1, y: 1, z: 0}
   - {x: -1, y: -1, z: 0}
   promotedLegalMoves:
-  - {x: 0, y: 1, z: 0}
   - {x: 1, y: 1, z: 0}
   - {x: 1, y: 0, z: 0}
+  - {x: 0, y: 1, z: 0}
   - {x: 0, y: -1, z: 0}
-  - {x: -1, y: 0, z: 0}
   - {x: -1, y: 1, z: 0}
+  - {x: -1, y: 0, z: 0}
   baseTexture: {fileID: 2800000, guid: 7ea395e29d26a8541b28855218fea685, type: 3}
   promotedTexture: {fileID: 2800000, guid: 6db1d1b0160533540bdf2e9d08ad986d, type: 3}
+  id: 4
+  proID: 10
