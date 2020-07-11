@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BoardSpot : MonoBehaviour
 {
+    [SerializeField]
+    Color originalColor;
+    bool colorSet = false;
     Vector2Int position;
     public Vector2Int Position
     {
@@ -16,6 +19,22 @@ public class BoardSpot : MonoBehaviour
     void Awake()
     {
         rend = GetComponent<Renderer>();
+    }
+
+    public void SetColor(Color color)
+    {
+        if (!colorSet)
+        {
+            originalColor = color;
+            colorSet = true;
+        }
+        rend.material.SetColor("_Color", color);
+    }
+
+    public void ResetColor()
+    {
+        rend.material.SetColor("_Color", originalColor);
+
     }
     // Start is called before the first frame update
     private void OnMouseUp()

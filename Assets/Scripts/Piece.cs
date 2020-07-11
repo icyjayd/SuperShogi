@@ -1,21 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Piece : MonoBehaviour
 {
 
     public PieceData pieceData;
     public bool forward = true;
+    [SerializeField]
     Vector3Int[] moveset;
     public List<Vector2Int> moves;
-    Renderer rend;
+    Vector2Int lastMove;
+    public Vector2Int lastPosition;
+    public Vector2Int LastPosition
+    {
+        get { return lastPosition; }
+        set { lastPosition = value; }
+    }
+
+    public Renderer rend;
     bool selected = false;
     public bool Selected
     {
         get { return selected; }
         set { selected = value; }
     }
+    [SerializeField]
     int owner = 0;
     public int Owner
     {
@@ -77,20 +88,34 @@ public class Piece : MonoBehaviour
         Vector2Int projection = currentPosition + move;
         if(projection.x <0 || projection.y <0 || projection.x > 8 || projection.y > 8)
         {
+            //if(id == Occupant.Rook && owner == 1)
+            //{
+            //    print(System.String.Format("Rook cannot access space {0}, as it is not in bounds. Current position: {1}, attempted move {2}", projection, currentPosition, move));
+            //}
             return false;
         }
         else
         {
+            //if (id == Occupant.Rook && owner == 1)
+            //{
+            //    print(System.String.Format("Rook can access space {0}, as it is in bounds. Current position: {1}, attempted move {2}", projection, currentPosition, move));
+            //}
+
             return true;
         }
     }
 
+    public void Move(Vector2Int space)
+    {
+        lastPosition = currentPosition;
+        currentPosition = space;
+    }
 
     public void CalculateLegalMoves(Piece[,]boardPieces = null)
     {
         //
         moves = new List<Vector2Int>();
-        if(currentPosition.x != -1)//piece on board
+        if (currentPosition.x != -1)//piece on board
         {
             foreach (Vector3Int move in moveset)
             {
@@ -107,6 +132,7 @@ public class Piece : MonoBehaviour
                 {
                     if (MoveInBounds(new Vector2Int(newMove.x, newMove.y)))
                     {
+
                         moves.Add(new Vector2Int(newMove.x, newMove.y));
                     }
                 }
@@ -114,15 +140,53 @@ public class Piece : MonoBehaviour
         }
         else//piece has position -1, -1 and is therefore OOP
         {
-          for(int i = 0; i < 9; i++)
+            print(name);
+            int limit;
+            for (int i = 0; i < 9; i++)
+
             {
-               
-                for(int j = 0; i < 9; j++)
+
+                for (int j = 0; i < 9; j++)
                 {
-                    if (boardPieces[i, j] != null)
+                    //if (boardPieces[i, j] != null)
+                    //{
+                    switch (id)
                     {
-                        moves.Add(new Vector2Int(i, j));
+                        case Occupant.Pawn:
+                            limit = 1;
+                            break;
+                        case Occupant.Knight:
+                            limit = 2;
+                            break;
+                        default:
+                            limit = 0;
+                            break;
                     }
+
+
+
+                    if (owner == 2)
+                    {
+                        if (i >= 0 + limit)
+                        {
+
+                            moves.Add(new Vector2Int(i, j));
+
+                        }
+                    }
+                    else
+                    {
+                        if (i <= (8 - limit))
+                        {
+                            print(new Vector2Int(i, j));
+
+                            moves.Add(new Vector2Int(i, j));
+
+                        }
+
+                    }
+
+                    //}
                 }
 
             }
@@ -134,6 +198,8 @@ public class Piece : MonoBehaviour
         id = pieceData.proID;
         rend.material.mainTexture = pieceData.promotedTexture;
         moveset = pieceData.promotedLegalMoves;
+        CalculateLegalMoves();
+      
     }
     public void Demote()
     {
@@ -143,6 +209,39 @@ public class Piece : MonoBehaviour
         moveset = pieceData.legalMoves;
     }
 
+    public bool AutoPromote()
+    {
+        if (id == Occupant.Pawn || id == Occupant.Lance)
+        {
+            if (currentPosition.x % 8 == 0)
+            {
+                return true;
+            }
+
+        }
+        else if (id == Occupant.Knight)
+        {
+            print(currentPosition);
+            if (Owner == 1)
+            {
+                if (currentPosition.x % 6 >= 1)
+                {
+                    
+                    return true;
+                }
+            }
+            else
+            {
+                if (currentPosition.x % 6 <= 1)
+                {
+                    return true;
+                }
+
+            }
+        }
+        return false;
+    }
+
     public void CalculateFarMoves(Vector3Int move)
     {
         int limit;
@@ -150,17 +249,19 @@ public class Piece : MonoBehaviour
 
         if (pieceData.pieceName == "Bishop")
         {
+           
             int signX = move.x / Mathf.Abs(move.x);
             int signY = move.y / Mathf.Abs(move.y);
             limit = Mathf.Min(9 - Mathf.Abs(currentPosition.x), 9 - Mathf.Abs(currentPosition.y));
-            for (int i = 1; i < limit; i++)
+            for (int i = 1; i < 9; i++)
             {
                 newMove = new Vector2Int(i * signX, i * signY);
-
+                
                 if (MoveInBounds(newMove))
                 {
                     moves.Add(newMove);
                 }
+
             }
         }
         else if (pieceData.pieceName == "Rook")
@@ -169,9 +270,11 @@ public class Piece : MonoBehaviour
             {
                 int signY = move.y / Mathf.Abs(move.y);
                 limit = Mathf.Min(9, move.y + currentPosition.y);
-                for (int i = 1; i < limit; i++)
+
+                for (int i = 1; i < 9; i++)
                 {
                     newMove = new Vector2Int(0, i * signY);
+                    //print(System.String.Format("i = {0}, newMove = {1}", i, newMove));
                     if (MoveInBounds(newMove))
                     {
                         moves.Add(newMove);
@@ -185,12 +288,17 @@ public class Piece : MonoBehaviour
             {
                 int signX = move.x / Mathf.Abs(move.x);
                 limit = Mathf.Min(9, move.x + currentPosition.x);
-                for (int i = 1; i < limit; i++)
+                //print(System.String.Format("move distance for rook: {0}", limit));
+
+                for (int i = 1; i < 9; i++)
                 {
 
-                    newMove = new Vector2Int(move.x + i * signX, 0);
+                    newMove = new Vector2Int(i * signX, 0);
+                    //print(System.String.Format("i = {0}, newMove = {1}", i, newMove));
+
                     if (MoveInBounds(newMove))
                     {
+
                         moves.Add(newMove);
                     }
 
@@ -200,6 +308,19 @@ public class Piece : MonoBehaviour
             }
 
         }
+        else
+        {
+            for(int i = 1; i<9; i++)
+            {
+                int signX = move.x / Mathf.Abs(move.x);
+                newMove = new Vector2Int(i * signX, 0);
+                if (MoveInBounds(newMove)){
+                    moves.Add(newMove);
+                }
+            }
+        }
+
+
 
     }
 

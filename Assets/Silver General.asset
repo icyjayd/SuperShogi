@@ -27,6 +27,6 @@ MonoBehaviour:
   - {x: -1, y: 1, z: 0}
   - {x: -1, y: 0, z: 0}
   baseTexture: {fileID: 2800000, guid: 7ea395e29d26a8541b28855218fea685, type: 3}
-  promotedTexture: {fileID: 2800000, guid: 6db1d1b0160533540bdf2e9d08ad986d, type: 3}
+  promotedTexture: {fileID: 2800000, guid: 63e5e92fc10c5ab40a9d096ee2e935d4, type: 3}
   id: 4
   proID: 10
