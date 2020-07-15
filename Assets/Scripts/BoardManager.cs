@@ -264,11 +264,11 @@ public class BoardManager : MonoBehaviour
 
                 if (p.Owner != currentKing.Owner)//for all pieces that could possibly capture the king
                 {
-                    if (p.pieceData.name == "Bishop")
-                    {
-                        print(p.name + p.moves.Count());
+                    //if (p.pieceData.name == "Bishop")
+                    //{
+                    //    print(p.name + p.moves.Count());
 
-                    }
+                    //}
                     //print(p.ToString() + p.Owner.ToString());
                     //print(currentKing.Owner);
 
@@ -437,11 +437,11 @@ public class BoardManager : MonoBehaviour
 
         }
         p.moves = newMoves;
-        if(p.pieceData.name == "Bishop")
-        {
-            print(p.ToString() + p.Owner.ToString() + " " + p.moves.Count());
+        //if(p.pieceData.name == "Bishop")
+        //{
+        //    print(p.ToString() + p.Owner.ToString() + " " + p.moves.Count());
 
-        }
+        //}
     }
     void SelectPiece(Piece p)
     {
@@ -885,10 +885,10 @@ public class BoardManager : MonoBehaviour
                         }
                         else //if at destination space 
                         {
-                            print("at destination");
+                         //   print("at destination");
                             if (!SpaceEmpty(space))
                             {//if the space is not empty 
-                                print(SpaceContainsEnemy(space));
+                                //print(SpaceContainsEnemy(space));
                                 if (!SpaceContainsEnemy(space))
                                 {
                                     //but not occupied by an enemy, line of sight is blocked
