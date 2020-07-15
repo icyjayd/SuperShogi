@@ -209,6 +209,7 @@ public class Piece : MonoBehaviour
         moveset = pieceData.legalMoves;
     }
 
+
     public bool AutoPromote()
     {
         if (id == Occupant.Pawn || id == Occupant.Lance)

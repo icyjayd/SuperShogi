@@ -654,13 +654,13 @@ public class BoardManager : MonoBehaviour
         switch (p.Owner)
         {
             case 1:
-                if (newPos.x >= 6)
+                if (newPos.x >= 6 || p.CurrentPosition.x >= 6)
                 {
                     return (true, true);
                 }
                 break;
             case 2:
-                if (newPos.x <= 2)
+                if (newPos.x <= 2 || p.CurrentPosition.x <=2)
                 {
                     // print(System.String.Format("promoting {0} owned by player {1}", p.name, p.Owner));
                     return (true, true);
@@ -687,7 +687,10 @@ public class BoardManager : MonoBehaviour
             {
 
                 Vector2Int newPos = p.CurrentPosition + move;
-                (piecePromotable, p.Promotable) = Promotable(p, newPos);
+                if (!sim)
+                {
+                    (piecePromotable, p.Promotable) = Promotable(p, newPos);
+                }
                 if (SpaceEmpty(newPos))
                 {
                     //print(System.String.Format("Before: {0}{1}'s current position: {2}", p.name, p.Owner, p.CurrentPosition));
@@ -1146,11 +1149,11 @@ public class BoardManager : MonoBehaviour
             {
                 
             }
-            foreach(Piece p in pieceGroups[i])
+            foreach(Piece p in pieceGroups[i])//for each 
             {
                 if (p.CurrentPosition.x == -1)
                 {
-                    p.transform.position = barracks[i-1].CellToWorld(new Vector3Int(j, boardY, k));
+                    p.transform.position = barracks[p.Owner-1].CellToWorld(new Vector3Int(j, boardY, k));
                     if (k > 8)
                     {
                         j += 1;
